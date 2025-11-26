@@ -1,0 +1,22 @@
+<!-- src/components/project-card/project-card.component.html -->
+<article class="project-card">
+  <!-- Заголовок карточки -->
+  <div class="project-card-header">
+    <h3>{{ project.title }}</h3>
+  </div>
+
+  <!-- Изображение проекта -->
+  <div class="project-card-image" *ngIf="project.imageUrl">
+    <img [src]="project.imageUrl" [alt]="project.title" />
+  </div>
+
+  <!-- Описание проекта -->
+  <p class="project-card-desc">
+    {{ project.description }}
+  </p>
+
+  <!-- Ссылка на проект -->
+  <div class="project-card-footer">
+    <button type="button" class="open-btn" (click)="open.emit(project)">Открыть проект</button>
+  </div>
+</article>

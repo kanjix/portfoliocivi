@@ -1,0 +1,21 @@
+<div class="modal-backdrop" [class.closing]="!visible" (click)="onBackdropClick($event)">
+  <div class="modal" [class.closing]="!visible">
+    <button class="modal-close" type="button" (click)="requestClose()">×</button>
+
+    <div class="modal-body">
+      <div class="modal-image" *ngIf="project?.imageUrl">
+        <img [src]="project?.imageUrl" [alt]="project?.title" />
+      </div>
+
+      <div class="modal-content">
+        <h3 class="modal-title">{{ project?.title }}</h3>
+        <p class="modal-meta">{{ project?.category }} · {{ project?.year }}</p>
+        <p class="modal-desc">{{ project?.description }}</p>
+
+        <div class="modal-actions">
+          <a *ngIf="project?.link" [href]="project?.link" target="_blank" rel="noopener noreferrer" class="open-full">Посмотреть полный проект</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

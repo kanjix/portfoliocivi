@@ -1,0 +1,118 @@
+.navbar {
+  position: fixed;
+  top: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  width: min(1100px, 100% - 2.5rem);
+}
+
+/* стеклянная "капсула" */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.15),
+    0 0 0 1px rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #111827;
+}
+
+.logo-text {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.9rem;
+}
+
+.navbar-links a {
+  position: relative;
+  text-decoration: none;
+  color: #374151;
+  padding: 0.25rem 0.1rem;
+  transition: color 0.2s ease;
+}
+
+/* подчёркивание при ховере */
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #111827;
+  transition: width 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #111827;
+}
+
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+/* активная ссылка чуть темнее */
+.navbar-links a.active {
+  color: #111827;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0 0.75rem;
+  }
+
+  .navbar-inner {
+    border-radius: 1.2rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+
+  .navbar-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

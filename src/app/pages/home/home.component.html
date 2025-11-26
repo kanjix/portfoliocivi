@@ -1,0 +1,183 @@
+<div class="page">
+  <!-- HERO с картинкой на ~полэкрана -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Есенгильдина Дильназ</span>
+      <h1 class="hero-title">Architecture.</h1>
+      <p class="hero-subtitle">
+        Современные архитектурные проекты, визуализации и интерьеры в
+        минималистичном стиле.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">Посмотреть проекты</a>
+        <a href="#about" class="btn-ghost">Обо мне</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <h2>О себе</h2>
+      <p>Немного обо мне и моём подходе к архитектуре.</p>
+    </div>
+
+    <div class="section-card">
+      <p>
+        Я — Дильназ, 21 год, студентка 4 курса по специальности «Архитектор». Занимаюсь архитектурным проектированием, 3D-моделированием и визуализацией. Самостоятельно осваиваю современные инструменты моделирования и люблю простые, чистые формы, много воздуха и функциональные пространства, в которых комфортно жить и работать.
+      </p>
+
+      
+     
+    </div>
+
+    <div class="section-card section-card--row">
+      <h3>Софт и инструменты</h3>
+      <div class="software-row">
+  <span class="chip" role="img" aria-label="AutoCAD" title="AutoCAD">
+    <img class="chip-icon" src="/assets/icons/autocad.webp" alt="AutoCAD" />
+  </span>
+
+  <span class="chip" role="img" aria-label="Revit" title="Revit">
+    <img class="chip-icon" src="/assets/icons/revit.webp" alt="Revit" />
+  </span>
+
+  <span class="chip" role="img" aria-label="SketchUp" title="SketchUp">
+    <img class="chip-icon" src="/assets/icons/sketchup.webp" alt="SketchUp" />
+  </span>
+
+  <span class="chip" role="img" aria-label="Enscape" title="Enscape">
+    <img class="chip-icon" src="/assets/icons/enscape.webp" alt="Enscape" />
+  </span>
+
+  <span class="chip" role="img" aria-label="3ds Max" title="3ds Max">
+    <img class="chip-icon" src="/assets/icons/3dsmax.webp" alt="3ds Max" />
+  </span>
+</div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <!--
+  <section class="section" id="experience">
+    <div class="section-header">
+      <h2>Опыт</h2>
+      <p>Опыт работы в студиях и над частными проектами.</p>
+    </div>
+
+    <div class="two-column">
+      <div class="section-card">
+        <h3>Senior Architect</h3>
+        <p class="meta">Studio X · 2021 — по наст. время</p>
+        <p>
+          Руководство концепцией проектов, планировками и визуализациями для
+          жилых и общественных зданий.
+        </p>
+      </div>
+
+      <div class="section-card">
+        <h3>Architect</h3>
+        <p class="meta">Studio Y · 2018 — 2021</p>
+        <p>
+          Участие в конкурсах, 3D-моделирование и подготовка презентаций для
+          международных проектов.
+        </p>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="section-header">
+      <h2>Образование</h2>
+      <p>Где я обучалась архитектуре, искусству и дизайну.</p>
+    </div>
+    <div class="two-column">
+      <div class="section-card">
+        <h3>Бакалавриат по архитектуре</h3>
+        <p class="meta">Казахский агротехнический исследовательский университет имени Сакена Сейфуллина · 2022 — наст. время</p>
+        <p>
+          Обучаюсь архитектурному проектированию, градостроительству и современным подходам к работе с пространством. Особое внимание уделяю 3D-моделированию, визуализации и созданию комфортной городской среды.
+        </p>
+      </div>
+
+      <div class="section-card">
+        <h3>Художественная школа</h3>
+        <p class="meta">КГУ «Дом детского творчества отдела образования Житикаринского района» · до 2018</p>
+        <p>
+          Изучала академический рисунок, живопись и композицию. В 2018 году закончила обучение и получила диплом об окончании художественной школы.
+        </p>
+      </div>
+        <div class="section-card">
+          <h3>Профориентационный курс «Художник-оформитель»</h3>
+          <p class="meta">С 2018 по 2019</p>
+          <p>
+            Профориентационный курс по специальности «Художник-оформитель», где изучала основы художественного оформления, работу с цветом и композицией, создание макетов печатной продукции.
+          </p>
+        </div>
+    </div>
+  </section>
+
+  <!-- SELECTED PROJECTS (динамика из JSON) -->
+  <section class="section" id="projects">
+    <div class="section-header header-with-button">
+      <div>
+        <h2>Превью проектов</h2>
+        <p>Небольшой обзор проектов в виде стопки карточек.</p>
+      </div>
+
+      <a routerLink="/projects" class="view-all-btn">Посмотреть все</a>
+    </div>
+
+    <!-- состояние загрузки -->
+    <p *ngIf="loading()">Загрузка...</p>
+
+    <!-- когда загрузка закончилась -->
+    <ng-container *ngIf="!loading()">
+      <div *ngIf="topProjects().length; else noProjects" class="carousel">
+        <button
+          type="button"
+          class="carousel-control"
+          (click)="prevProject()"
+          aria-label="Предыдущий проект"
+        >
+          ‹
+        </button>
+
+        <div class="carousel-stack">
+          <article
+            class="project-card-stack"
+            *ngFor="let project of topProjects(); let i = index"
+            [ngStyle]="getCardStyle(i)"
+          >
+            <h3>{{ project.title }}</h3>
+            <p class="meta">
+              {{ project.category }} · {{ project.year }}
+            </p>
+            <p class="stack-desc">
+              {{ project.description }}
+            </p>
+            <button type="button" class="project-card__link" (click)="selectedProject.set(project)">Открыть проект</button>
+          </article>
+        </div>
+
+        <button
+          type="button"
+          class="carousel-control"
+          (click)="nextProject()"
+          aria-label="Следующий проект"
+        >
+          ›
+        </button>
+      </div>
+
+      <ng-template #noProjects>
+        <p class="projects-empty">Пока нет проектов.</p>
+      </ng-template>
+    </ng-container>
+        <app-project-modal *ngIf="selectedProject()" [project]="selectedProject()" (close)="selectedProject.set(undefined)"></app-project-modal>
+  </section>
+</div>
